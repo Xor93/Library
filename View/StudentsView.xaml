@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="test.View.StudentsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             MinWidth="250"
+             DataContext="{Binding Students, Source={StaticResource Locator}}">
+    <Grid>
+        <DockPanel Background="#485460" >
+            <DockPanel DockPanel.Dock="Top" Height="30">
+                <TextBlock FontSize="15"  VerticalAlignment="Center" Margin="10,0" FontFamily="Verdana" Foreground="White" Text="Students"/>
+                <TextBox Text="{Binding Search, Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}" Width="170" HorizontalAlignment="Right" VerticalAlignment="Center"  FontSize="15" Margin="5" FontFamily="Verdana" Foreground="#485460"/>
+            </DockPanel>
+
+            <DataGrid  Name="DataStudent" SelectedItem="{Binding Cur_Student, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" CanUserResizeRows="False"  ScrollViewer.HorizontalScrollBarVisibility="Hidden" Width="auto" Padding="2" ItemsSource="{Binding Path=Students}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" HorizontalGridLinesBrush="#d1ccc0" VerticalGridLinesBrush="#d1ccc0" RowBackground="Transparent" AlternatingRowBackground="White" Background="White" BorderBrush="#485460" BorderThickness="0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name"  Binding="{Binding Path=FullName}" Width="*"/>
+                    <DataGridTextColumn Header="Group" Binding="{Binding Path=Group}" Width="*"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </DockPanel>
+    </Grid>
+</UserControl>

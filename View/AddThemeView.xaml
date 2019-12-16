@@ -1,0 +1,26 @@
+﻿<Window x:Class="test.View.AddThemeView"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:test.ViewModel"
+        mc:Ignorable="d"
+        x:Name="CategoryWindow"
+        Title="AddCategoryView" Height="200" Width="400" ResizeMode="NoResize"
+        DataContext="{Binding AddTheme, Source={StaticResource Locator}}">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center"  VerticalAlignment="Center">
+            <TextBlock Text="Add new theme" HorizontalAlignment="Center" FontSize="25" Margin="10"/>
+            <StackPanel  Width="310" Margin="5">
+                <TextBlock Text="Title" FontSize="20"/>
+                <TextBox Text="{Binding Title,Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" FontSize="20"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal"  Margin="5">
+                <Button Command="{Binding Add}" CommandParameter="{Binding ElementName=CategoryWindow}" Content="Add" Width="50" Height="20" Margin="3"/>
+                <Button Command="{Binding Close}" CommandParameter="{Binding ElementName=CategoryWindow}" Content="Cancel" Width="50" Height="20" Margin="3"/>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>

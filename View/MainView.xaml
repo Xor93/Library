@@ -1,0 +1,41 @@
+﻿<Window x:Class="test.View.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:view="clr-namespace:test.View"
+        Title="TestWindow" Height="450" Width="800" MinHeight="550">
+
+    <Grid>
+
+        <Grid.Resources>
+            <Style TargetType="{x:Type DataGridCell}">
+                <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="Background" Value="#576574"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" MinHeight="250"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*" MinHeight="250"/>
+        </Grid.RowDefinitions>
+
+        <view:BooksView Grid.Row="0"/>
+        <GridSplitter Grid.Row="1" ShowsPreview="True" HorizontalAlignment="Stretch" VerticalAlignment="Center"  Height="2" Background="Transparent"/>
+
+        <Grid Grid.Row="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="450" MaxWidth="750" MinWidth="350"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <view:StudentsView Grid.Column="0"/>
+            <GridSplitter Grid.Column="1" ShowsPreview="True" HorizontalAlignment="Center" VerticalAlignment="Stretch"  Width="2" Background="Transparent"/>
+            <view:DebtBooksView Grid.Column="2"/>
+        </Grid>
+
+    </Grid>
+</Window>
